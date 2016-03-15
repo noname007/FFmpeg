@@ -24,7 +24,7 @@
 #include "libavutil/intfloat.h"
 #include "libavutil/avassert.h"
 #include "avc.h"
-#include “hevc.h"
+#include "hevc.h"
 #include "avformat.h"
 #include "flv.h"
 #include "internal.h"
@@ -449,7 +449,7 @@ static int flv_write_header(AVFormatContext *s)
 
     for (i = 0; i < s->nb_streams; i++) {
         AVCodecContext *enc = s->streams[i]->codec;
-        if (enc->codec_id == AV_CODEC_ID_AAC || enc->codec_id == AV_CODEC_ID_H264 || enc->codec_id == AV_CODEC_ID_MPEG4||ecn->codec_id == AV_CODEC_ID_HEVC) {
+        if (enc->codec_id == AV_CODEC_ID_AAC || enc->codec_id == AV_CODEC_ID_H264 || enc->codec_id == AV_CODEC_ID_MPEG4||enc->codec_id == AV_CODEC_ID_HEVC) {
             int64_t pos;
             avio_w8(pb, enc->codec_type == AVMEDIA_TYPE_VIDEO ?
                     FLV_TAG_TYPE_VIDEO : FLV_TAG_TYPE_AUDIO);
@@ -555,7 +555,7 @@ static int flv_write_packet(AVFormatContext *s, AVPacket *pkt)
     if (enc->codec_id == AV_CODEC_ID_VP6F || enc->codec_id == AV_CODEC_ID_VP6A ||
         enc->codec_id == AV_CODEC_ID_VP6  || enc->codec_id == AV_CODEC_ID_AAC)
         flags_size = 2;
-    else if (enc->codec_id == AV_CODEC_ID_H264 || enc->codec_id == AV_CODEC_ID_MPEG4||enc->AV_CODEC_ID_HEVC)
+    else if (enc->codec_id == AV_CODEC_ID_H264 || enc->codec_id == AV_CODEC_ID_MPEG4||enc->codec_id == AV_CODEC_ID_HEVC)
         flags_size = 5;
     else
         flags_size = 1;
