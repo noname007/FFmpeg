@@ -1075,7 +1075,7 @@ retry_duration:
             }
         }
         if (type == 0 && (!st->codec->extradata || st->codec->codec_id == AV_CODEC_ID_AAC ||
-            st->codec->codec_id == AV_CODEC_ID_H264)) {
+            st->codec->codec_id == AV_CODEC_ID_H264||st->codec->codec_id == AV_CODEC_ID_HEVC)) {
             AVDictionaryEntry *t;
 
             if (st->codec->extradata) {
